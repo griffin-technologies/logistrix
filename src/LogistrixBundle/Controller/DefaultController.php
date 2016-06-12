@@ -9,6 +9,11 @@ class DefaultController extends BaseController
 {
     public function indexAction() : Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute(
+                'logistrix_login'
+            );
+        }
         if ($this->getUser()->hasRole(User::ROLE_SUPER_ADMIN)) {
             return $this->render(
                 ':authenticated/superadmin:index.html.twig'

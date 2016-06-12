@@ -10,6 +10,5 @@ class DashboardController extends BaseController
 {
     public function defaultAction()
     {
-
     }
 }

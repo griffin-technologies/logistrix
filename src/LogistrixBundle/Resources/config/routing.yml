@@ -25,7 +25,7 @@ logistrix_tos:
         _controller: LogistrixBundle:Default:index
 
 #Firewalled anonymous
-logistrix_register:
+register:
     path: /register
     defaults:
         _controller: LogistrixBundle:Registration:register
@@ -34,9 +34,6 @@ logistrix_login:
     path: /login
     defaults:
         _controller: LogistrixBundle:Security:login
-
-logistrix_login_check:
-    path: /login_check
 
 #Application
 logistrix_index:

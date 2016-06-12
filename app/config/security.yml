@@ -17,20 +17,24 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        default:
+        login_firewall:
+            pattern: ^/login$
             anonymous: ~
             form_login:
                 login_path: logistrix_login
-                check_path: logistrix_login_check
+                check_path: login_check
             provider: logistrix_db_provider
 
-        login_firewall:
-            pattern:   ^/login$
-            anonymous: ~
-
         secured_area:
-            pattern:    ^/
-            form_login: ~
+            pattern: ^/
+            anonymous: ~
+            provider: logistrix_db_provider
+            form_login:
+                check_path: login_check
+                login_path: logistrix_login
+            logout:
+                path: logout
+                target: /
 
     access_control:
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
