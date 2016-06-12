@@ -1,0 +1,22 @@
+{
+  "name": "logistrix",
+  "homepage": "https://github.com/griffin-technologies/logistrix",
+  "description": "Job management solutions",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "logistrix"
+  ],
+  "authors": [
+    "Griffin Technologies Ltd."
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
