@@ -23,8 +23,8 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
-    <parameter key="path_to_node_modules">/usr/local/lib/node_modules</parameter>
     <parameter key="path_to_node">/usr/bin/node</parameter>
+    <parameter key="path_to_node_modules">/usr/local/lib/node_modules</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
     <parameter key="database_port">null</parameter>
     <parameter key="database_name">symfony</parameter>
@@ -486,7 +486,7 @@
                   <tag name="cache.pool"/>
                   <argument>6fH0gAcCse</argument>
                   <argument></argument>
-                  <argument>7rda+2IzEVQZo8wmQcReMA</argument>
+                  <argument>rbwfMWZKbLHmsy0dK8OtTA</argument>
                   <argument>/var/www/logistrix/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -499,7 +499,7 @@
                   <tag name="cache.pool"/>
                   <argument>DMU2bPgpZ2</argument>
                   <argument></argument>
-                  <argument>7rda+2IzEVQZo8wmQcReMA</argument>
+                  <argument>rbwfMWZKbLHmsy0dK8OtTA</argument>
                   <argument>/var/www/logistrix/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -831,7 +831,7 @@
       <tag name="cache.pool"/>
       <argument>AENuIgwLIt</argument>
       <argument></argument>
-      <argument>7rda+2IzEVQZo8wmQcReMA</argument>
+      <argument>rbwfMWZKbLHmsy0dK8OtTA</argument>
       <argument>/var/www/logistrix/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1557,7 +1557,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>575cbfda688553.06187618</argument>
+            <argument>575ccc78b08758.08657487</argument>
           </service>
         </argument>
       </argument>
@@ -1691,7 +1691,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>575cbfda688553.06187618</argument>
+            <argument>575ccc78b08758.08657487</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2126,6 +2126,15 @@
       </argument>
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
       <configurator service="doctrine.orm.default_manager_configurator" method="configure"/>
+    </service>
+    <service id="doctrine.orm.default_entity_manager.property_info_extractor" class="Symfony\Bridge\Doctrine\PropertyInfo\DoctrineExtractor">
+      <tag name="property_info.list_extractor" priority="-1001"/>
+      <tag name="property_info.type_extractor" priority="-999"/>
+      <argument type="service">
+        <service class="Doctrine\Common\Persistence\Mapping\ClassMetadataFactory" public="false">
+          <factory service="doctrine.orm.default_entity_manager" method="getMetadataFactory"/>
+        </service>
+      </argument>
     </service>
     <service id="sensio_framework_extra.view.guesser" class="Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser">
       <argument type="service" id="kernel"/>
