@@ -91,4 +91,6 @@
   90 => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\HttpCacheListener',
   91 => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\SecurityListener',
   92 => 'Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\ConfigurationAnnotation',
+  93 => 'Symfony\\Bundle\\AsseticBundle\\DefaultValueSupplier',
+  94 => 'Symfony\\Bundle\\AsseticBundle\\Factory\\AssetFactory',
 );
