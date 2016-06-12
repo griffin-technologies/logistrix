@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, { "attr": { "class": "form-horizontal" }}) }}
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, { "attr": { "class": "form-control", "placeholder": "Email" }}) }}
+    </div>
+    {% for passwordField in form.plainPassword %}
+        <div class="form-group">
+            {{ form_label(passwordField) }}
+            {{ form_widget(passwordField, { "attr": { "class": "form-control", "placeholder": "Password" }}) }}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-default">Submit</button>
+    {{ form_end(form) }}
+{% endblock %}

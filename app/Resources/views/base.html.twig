@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Logistrix{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-    <footer>
-        test footer
-    </footer>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Logistrix{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets
+        'assets/vendor/bootstrap/dist/css/bootstrap.css'
+        'assets/css/main.less' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<!-- Main content -->
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}
+    {% javascripts %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+<!-- Footer -->
+<footer>
+    {% block footer %}test footer{% endblock %}
+</footer>
+</body>
 </html>

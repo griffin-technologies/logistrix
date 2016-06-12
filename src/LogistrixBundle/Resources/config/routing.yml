@@ -1,0 +1,50 @@
+#Marketing website
+logistrix_home:
+    path: /
+    defaults:
+        _controller: LogistrixBundle:Default:index
+
+logistrix_about:
+    path: /about
+    defaults:
+        _controller: LogistrixBundle:Default:index
+
+logistrix_contact:
+    path: /contact
+    defaults:
+        _controller: LogistrixBundle:Default:index
+
+logistrix_pricing:
+    path: /pricing
+    defaults:
+        _controller: LogistrixBundle:Default:index
+
+logistrix_tos:
+    path: /terms-of-service
+    defaults:
+        _controller: LogistrixBundle:Default:index
+
+#Firewalled anonymous
+logistrix_register:
+    path: /register
+    defaults:
+        _controller: LogistrixBundle:Registration:register
+
+logistrix_login:
+    path: /login
+    defaults:
+        _controller: LogistrixBundle:Security:login
+
+logistrix_login_check:
+    path: /login_check
+
+#Application
+logistrix_index:
+    path: /logistrix
+    defaults:
+        _controller: LogistrixBundle:Default:index
+
+logistrix_dashboard:
+    path: /logistrix/dashboard
+    defaults:
+        _controller: LogistrixBundle:Dashboard:default
