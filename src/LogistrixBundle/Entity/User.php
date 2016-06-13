@@ -5,17 +5,8 @@
 
 namespace LogistrixBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Table(name="users")
- * @ORM\Entity
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
- */
 class User implements UserInterface, \Serializable
 {
     const ROLE_ADMIN = 'ROLE_ADMIN';
@@ -23,62 +14,56 @@ class User implements UserInterface, \Serializable
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var int $id
      */
     private $id;
-
     /**
-     * @ORM\Column(type="string", length=60, unique=true)
+     * @var string $username
      */
     private $username;
-
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string $password
      */
     private $password;
-
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+     * @var string $plainPassword
      */
     private $plainPassword;
-
     /**
-     * @ORM\Column(type="string", length=60, unique=true)
+     * @var string $email
      */
     private $email;
-
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @var bool $isActive
      */
     private $isActive;
-
     /**
-     * @ORM\Column(name="roles", type="text")
+     * @var array $roles
      */
     private $roles;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->isActive = true;
         $this->roles = [];
     }
 
+    /**
+     * @return string
+     */
     public function getUsername()
     {
         return $this->username;
     }
 
     /**
-     * Set username
-     *
-     * @param string $username
-     *
+     * @param string|null $username
      * @return $this
      */
-    public function setUsername($username)
+    public function setUsername(string $username)
     {
         $this->username = $username;
 
@@ -92,26 +77,32 @@ class User implements UserInterface, \Serializable
         return null;
     }
 
+    /**
+     * @return string
+     */
     public function getPlainPassword()
     {
         return $this->plainPassword;
     }
 
+    /**
+     * @param string|null $password
+     */
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
     }
 
+    /**
+     * @return string
+     */
     public function getPassword()
     {
         return $this->password;
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     *
+     * @param string|null $password
      * @return $this
      */
     public function setPassword($password)
@@ -123,7 +114,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @param string $role
-     * @return mixed
+     * @return $this
      */
     public function addRole($role)
     {
@@ -138,13 +129,11 @@ class User implements UserInterface, \Serializable
             $roles[] = $role;
         }
 
-        $this->setRoles($roles);
-
-        return $this;
+        return $this->setRoles($roles);
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getRoles()
     {
@@ -152,7 +141,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param mixed $roles
+     * @param array|null $roles
      * @return $this
      */
     public function setRoles($roles)
@@ -164,7 +153,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @param string $role
-     * @return mixed
+     * @return $this
      */
     public function removeRole($role)
     {
@@ -180,7 +169,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @param string $role
-     * @return mixed
+     * @return bool
      */
     public function hasRole($role)
     {
@@ -205,7 +194,9 @@ class User implements UserInterface, \Serializable
         );
     }
 
-    /** @see \Serializable::unserialize() */
+    /**
+     * @param string $serialized
+     */
     public function unserialize($serialized)
     {
         list (
