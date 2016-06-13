@@ -1,0 +1,106 @@
+.btn {
+  border: 0;
+}
+
+
+.customer {
+  .btn-default {
+    color: @cust-dark;
+    background-color: @cust-light;
+    border: 1px solid @cust-base;
+    &:hover {
+      color: @cust-light;
+      background-color: @cust-dark;
+    }
+    &.active {
+      background-color: @cust-base-dark;
+      box-shadow: none;
+      color: @cust-light;
+    }
+    &.disabled {
+      background-color: @cust-mid;
+      box-shadow: none;
+      color: @cust-light;
+    }
+  }
+  .btn-primary {
+    color: @cust-light;
+    background-color: @cust-base;
+    border-width: 0;
+    &:hover {
+      background-color: @cust-base-dark;
+    }
+  }
+  .btn-success {
+    color: @cust-light;
+    background-color: @cust-dark;
+    border: 0;
+    &:hover {
+      background-color: @cust-medium;
+      border-color: @cust-medium;
+    }
+  }
+}
+
+.admin {
+  .btn-default {
+    color: @ind-dark;
+    background-color: @ind-light;
+    border: 1px solid @ind-base;
+    &:hover {
+      color: @ind-light;
+      background-color: @ind-base;
+      border-color: @ind-light;
+    }
+  }
+  .btn-primary {
+    color: @ind-light;
+    background-color: @ind-base;
+    border-width: 0;
+    &:hover {
+      background-color: @ind-base-dark;
+    }
+  }
+}
+
+.partner {
+  .btn-default {
+    color: @ind-dark;
+    background-color: @ind-light;
+    border: 1px solid @ind-base;
+    &:hover {
+      color: @ind-light;
+      background-color: @ind-base;
+      border-color: @ind-light;
+    }
+  }
+  .btn-primary {
+    color: @ind-light;
+    background-color: @ind-base;
+    border-width: 0;
+    &:hover {
+      background-color: @ind-base-dark;
+    }
+  }
+}
+
+.super-admin {
+  .btn-default {
+    color: @ind-dark;
+    background-color: @ind-light;
+    border: 1px solid @ind-base;
+    &:hover {
+      color: @ind-light;
+      background-color: @ind-base;
+      border-color: @ind-light;
+    }
+  }
+  .btn-primary {
+    color: @ind-light;
+    background-color: @ind-base;
+    border-width: 0;
+    &:hover {
+      background-color: @ind-base-dark;
+    }
+  }
+}
